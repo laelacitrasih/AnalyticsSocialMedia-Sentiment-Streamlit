@@ -31,10 +31,9 @@ def load_model_and_tokenizer():
 # =========================================================
 @torch.no_grad()
 def predict_sentiment(text, model, tokenizer, label_dict):
-    """
-    Perform sentiment inference on a single tweet.
-    Returns a human-readable sentiment label.
-    """
+    device = torch.device("cpu")
+
+    model = model.to(device)
 
     encoded_input = tokenizer(
         text,
@@ -44,21 +43,24 @@ def predict_sentiment(text, model, tokenizer, label_dict):
         max_length=128
     )
 
+    encoded_input = {k: v.to(device) for k, v in encoded_input.items()}
+
     outputs = model(**encoded_input)
-    pred_id = torch.argmax(outputs.logits, dim=1).item()
+
+    pred_id = torch.argmax(outputs.logits, dim=1).cpu().item()
     raw_label = label_dict[pred_id]
 
-    # Normalize labels (model-dependent)
     label_map = {
         "negative": "Negative",
         "neutral": "Neutral",
         "positive": "Positive",
-        "LABEL_0": "Negative",
-        "LABEL_1": "Neutral",
-        "LABEL_2": "Positive",
+        "label_0": "Negative",
+        "label_1": "Neutral",
+        "label_2": "Positive",
     }
 
     return label_map.get(raw_label.lower(), raw_label)
+
 
 
 # =========================================================
