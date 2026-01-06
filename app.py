@@ -30,7 +30,10 @@ with st.sidebar:
 # =========================================================
 # Load Model
 # =========================================================
-model, tokenizer, label_names = load_model_and_tokenizer()
+def load_model_cached():
+    return load_model_and_tokenizer()
+
+model, tokenizer, label_names = load_model_cached()
 
 # =========================================================
 # Disaster Keywords (Aligned with Paper)

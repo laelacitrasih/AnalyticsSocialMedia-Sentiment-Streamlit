@@ -13,7 +13,10 @@ def load_model_and_tokenizer():
     """
     model_name = "cardiffnlp/twitter-xlm-roberta-base-sentiment"
 
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    tokenizer = AutoTokenizer.from_pretrained(
+        model_name,
+        use_fast=False   # <- WAJIB
+    )
     model = AutoModelForSequenceClassification.from_pretrained(model_name)
     model.eval()
 
