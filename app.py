@@ -89,70 +89,153 @@ elif st.session_state.page == "Project Overview":
 
     st.title("📊 Project Overview")
 
-    tab1, tab2, tab3 = st.tabs(["Overview", "Data & Model", "Paper & Slides"])
+    tab1, tab2, tab3 = st.tabs(
+        ["🧭 Overview", "📊 Data & Model", "📄 Paper & Slides"]
+    )
 
     # -----------------------------------------------------
     # TAB 1: OVERVIEW
     # -----------------------------------------------------
     with tab1:
         st.markdown("""
-        ### Research Context
+        ### 🧠 Research Context
 
-        This project analyzes **public sentiment and interaction patterns** related to:
-        - 🔥 Forest fires (*kebakaran hutan*)
-        - 🌫️ Haze disasters (*kabut asap*)
+        Forest fire (*kebakaran hutan*) and haze (*kabut asap*) disasters are recurring
+        environmental crises that generate strong public reactions on social media.
+        Twitter enables users to rapidly share information, express emotions, and
+        interact during disaster events.
 
-        using **Twitter data**.
+        This project analyzes **public sentiment and interaction patterns** related to
+        forest fire and haze disasters using **Twitter data**, with a focus on
+        understanding how emotions propagate through online networks.
 
-        ### Objectives (Aligned with Paper)
-        - Classify public sentiment (positive, negative, neutral)
-        - Understand emotional responses during disasters
-        - Support disaster communication and mitigation strategies
+        ---
+        ### 🎯 Objectives (Aligned with Course & Paper)
 
-        ### System Scope
-        - Tweet-level sentiment inference (demo)
-        - Network and community analysis (offline, research pipeline)
+        This project is designed to enable students and researchers to:
+
+        1. **Classify public opinions and emotions** related to disaster events  
+        2. **Integrate sentiment analysis with social network analysis (SNA)**  
+        3. **Identify influential actors and discussion communities**  
+        4. **Generate insights relevant to disaster communication and mitigation**
+
+        ---
+        ### 🔍 System Scope
+
+        - Tweet-level sentiment inference (interactive demo)
+        - Disaster-related keyword detection
+        - Offline analytical pipeline:
+          - Social Network Construction
+          - Community Detection
+          - Centrality Analysis
+          - Integrated Sentiment–Network Analysis
+
+        The Streamlit application serves as a **demonstration interface**, while the
+        complete analytical results are reported in the research paper.
         """)
 
     # -----------------------------------------------------
     # TAB 2: DATA & MODEL
     # -----------------------------------------------------
     with tab2:
+        st.markdown("### 📂 Dataset Description")
+
+        st.markdown("""
+        The dataset was collected using a **custom Twitter scraping framework** that
+        retrieves multiple forms of user interaction to support sentiment and network
+        analysis, including:
+
+        - Root tweets  
+        - Replies  
+        - Conversation threads  
+        - Quoted tweets  
+
+        ---
+        ### 📊 Dataset Statistics
+
+        - **Total tweets:** 4,199  
+        - **Unique users:** 3,609  
+        - **Conversation threads:** 1,305  
+        - **Interaction edges:** 4,199  
+
+        ---
+        ### 🗃️ Tweet Record Structure
+
+        Each tweet record includes the following attributes:
+
+        - `tweet_id`  
+        - `parent_tweet_id`  
+        - `username`  
+        - `tweet_text`  
+        - `sentiment`  
+        - `sentiment_score`  
+        - `user_sentiment_score`  
+
+        These fields enable **tweet-level**, **user-level**, and
+        **network-level** analysis.
+        """)
+
         st.markdown("### 🤖 Sentiment Analysis Model")
 
         st.markdown("""
         - **Model:** `cardiffnlp/twitter-xlm-roberta-base-sentiment`
         - **Architecture:** XLM-RoBERTa (Transformer-based)
-        - **Capabilities:**  
-          - Multilingual (Indonesian & English)
-          - Robust to informal Twitter language
-        - **Output:** Positive / Neutral / Negative
+        - **Training Data:** Twitter-based sentiment benchmark
+        - **Inference Type:** Zero-shot (no additional fine-tuning)
         """)
 
         st.markdown("""
-        ### 📌 Notes on Usage
-        - The model performs **zero-shot inference**
-        - No additional fine-tuning was applied
-        - Predictions reflect **tweet-level sentiment**, not factual correctness
+        ### 🌐 Model Capabilities
+
+        - Multilingual support (Indonesian & English)
+        - Robust to informal and noisy Twitter language
+        - Suitable for real-time sentiment inference
+        - Outputs **three sentiment classes**:
+          - Positive
+          - Neutral
+          - Negative
         """)
 
         st.markdown("""
         ### 📄 Relation to Research Paper
-        This application implements the **Sentiment Analysis Module** described in:
+
+        This Streamlit application implements the **Sentiment Analysis Module**
+        described in the paper:
+
         > *Integrated Sentiment Analysis and Social Network Analysis for Forest Fire and Haze Disasters*
 
-        Network construction, community detection, and centrality analysis are conducted
-        using offline pipelines and are reported in the paper.
+        Advanced analyses—including network construction, community detection,
+        centrality analysis, and sentiment–network integration—are performed
+        offline and reported in the paper.
         """)
 
+        st.info(
+            "ℹ️ Note: Sentiment predictions reflect emotional polarity, "
+            "not factual correctness or ground truth validation."
+        )
+
+    # -----------------------------------------------------
+    # TAB 3: PAPER & SLIDES
+    # -----------------------------------------------------
     with tab3:
-            st.subheader("📄 Final Paper")
-            st.markdown("Berikut adalah paper penelitian yang ditulis dalam format IEEE berdasarkan proyek ini:")
-        
-            st.markdown("""
-            ### 📝 Paper & Slides
-        
-            - Paper IEEE Format: [Sharelatex](https://www.overleaf.com/read/jgvvvppjmwyk#119cf3)
-            - Slides: [Canva](https://www.canva.com/design/DAGlgd6NJcs/13a6Ezvop1ocBAKt0I2WNg/edit?utm_content=DAGlgd6NJcs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
-        
-            """)
+        st.subheader("📄 Final Paper & Presentation")
+
+        st.markdown("""
+        This project is documented in an **IEEE-format research paper** and
+        accompanied by presentation slides.
+
+        ### 📝 Resources
+
+        - 📄 **Paper (IEEE Format)**  
+          https://www.overleaf.com/read/jgvvvppjmwyk#119cf3
+
+        - 📊 **Presentation Slides**  
+          https://www.canva.com/design/DAG9qyPyaPk/_vTaj5GyB6tvLdyJH1lYQw/edit?utm_content=DAG9qyPyaPk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+        ---
+        These materials provide a complete explanation of:
+        - Methodology
+        - Experimental results
+        - Integrated sentiment–network analysis
+        - Implications for disaster management
+        """)
