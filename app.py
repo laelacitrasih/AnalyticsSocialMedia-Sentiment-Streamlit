@@ -196,23 +196,6 @@ elif st.session_state.page == "Project Overview":
           - Negative
         """)
 
-        st.markdown("""
-        ### 📄 Relation to Research Paper
-
-        This Streamlit application implements the **Sentiment Analysis Module**
-        described in the paper:
-
-        > *Integrated Sentiment Analysis and Social Network Analysis for Forest Fire and Haze Disasters*
-
-        Advanced analyses—including network construction, community detection,
-        centrality analysis, and sentiment–network integration—are performed
-        offline and reported in the paper.
-        """)
-
-        st.info(
-            "ℹ️ Note: Sentiment predictions reflect emotional polarity, "
-            "not factual correctness or ground truth validation."
-        )
 
     # -----------------------------------------------------
     # TAB 3: PAPER & SLIDES
@@ -227,10 +210,10 @@ elif st.session_state.page == "Project Overview":
         ### 📝 Resources
 
         - 📄 **Paper (IEEE Format)**  
-          https://www.overleaf.com/read/jgvvvppjmwyk#119cf3
+          [Sharelatex](https://www.overleaf.com/read/jgvvvppjmwyk#119cf3)
 
         - 📊 **Presentation Slides**  
-          https://www.canva.com/design/DAG9qyPyaPk/_vTaj5GyB6tvLdyJH1lYQw/edit?utm_content=DAG9qyPyaPk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+          [Slides](https://www.canva.com/design/DAG9qyPyaPk/_vTaj5GyB6tvLdyJH1lYQw/edit?utm_content=DAG9qyPyaPk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
         ---
         These materials provide a complete explanation of:
